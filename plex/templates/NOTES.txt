@@ -1,1 +1,0 @@
-Plex is accessible https://{{ .Values.subdomain }}

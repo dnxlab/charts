@@ -1,5 +1,0 @@
-namespace: cloudflared
-image:
-  repository: cloudflare/cloudflared
-  tag: 2025.2.1
-secretName: homelab-cf-tunnel-credentials
