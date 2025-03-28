@@ -7,6 +7,6 @@ helm package .
 
 Run in root directory
 ```
-helm repo index --url https://raw.githubusercontent.com/dnx/charts/main/ .
+helm repo index --url https://dnxlab.github.io/charts/ .
 ```
 

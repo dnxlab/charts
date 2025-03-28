@@ -12,4 +12,6 @@ spec:
   ports:
     - port: {{ .Values.port }}        # Internal port for the service
       targetPort: {{ .Values.port }}  # Port where the Plex container is listening
-  #    nodePort: {{ .Values.port }}    # NodePort to expose the service
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort: {{ .Values.port }}    # NodePort to expose the service
+      {{- end }}
