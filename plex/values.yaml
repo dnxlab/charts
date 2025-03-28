@@ -1,0 +1,35 @@
+name: plex
+namespace: plex
+subdomain: plex.dnxlab.online
+
+podLabels:
+  app: plex
+
+service:
+  type: ClusterIP
+
+image:
+  repository: linuxserver/plex # https://hub.docker.com/r/linuxserver/plex
+  tag: 1.41.5
+
+replicas: 1
+port: 32400
+
+# CPU and memory for a pod
+requests:
+  memory: "1024Mi"
+  cpu: "500m"
+limits:
+  memory: "2048Mi"
+  cpu: "1500m"
+
+env:
+  timezone: Europe/Vilnius
+  claimToken: "YOUR_PLEX_CLAIM_TOKEN"
+
+nfs:
+  serverIp: 192.168.40.190
+  libraryPath: /hdd-pool/library
+  libraryStorageSize: 2000Gi
+  configPath: /hdd-pool/library/config/plex
+  configStorageSize: 1Gi

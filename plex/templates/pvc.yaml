@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-library-nfs-pvc
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - ReadOnlyMany
+  selector:
+    matchLabels:
+      app: plex-library
+  resources:
+    requests:
+      storage: {{ .Values.nfs.libraryStorageSize }} # Match the capacity defined in the PV
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-config-nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  selector:
+    matchLabels:
+      app: plex-config
+  resources:
+    requests:
+      storage: {{ .Values.nfs.configStorageSize }}
